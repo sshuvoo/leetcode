@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/island-perimeter/description/
+
 function islandPerimeter(grid: number[][]): number {
    let perimeter: number = 0;
    for (let i = 0; i < grid.length; i++) {
