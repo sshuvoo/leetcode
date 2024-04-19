@@ -1,0 +1,1 @@
+console.log("index".indexOf("dexw"));
