@@ -1,27 +1,30 @@
 function climbStairs(n: number): number {
-   let ways: number = 0;
-   if (n % 2 === 0) {
-      ways += 2;
-   } else {
-      ways = 1 + (n - 1) + (n - 2);
+   let ways: number = 0
+   let two = n % 2 === 0 ? n / 2 : (n - 1) / 2
+   while (two >= 1) {
+      if (n % 2 === 0) {
+         two = n / 2
+      } else {
+         ways = 1 + (n - 1) + (n - 2)
+      }
    }
 }
 
-console.log(climbStairs(5));
+console.log(climbStairs(6))
 
-1111111;
+2 + 2 + 2
 
-111112;
-111121;
-111211;
-112111;
-121111;
-211111;
+2 + 2 + 1 + 1
+2 + 1 + 2 + 1
+2 + 1 + 1 + 2
+1 + 2 + 1 + 1
+1 + 1 + 2 + 1
+1 + 1 + 1 + 2
 
-11122;
-11221;
-12211;
-22111;
+2 + 1 + 1 + 1 + 1
+1 + 2 + 1 + 1 + 1
+1 + 1 + 2 + 1 + 1
+1 + 1 + 1 + 2 + 1
+1 + 1 + 1 + 1 + 2
 
-1222
-2221
+1 + 1 + 1 + 1 + 1 + 1
