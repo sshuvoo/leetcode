@@ -1,43 +1,43 @@
-class ListNode1 {
-   value: number
-   prev: ListNode1 | null
-   next: ListNode1 | null
-   constructor(
-      value: number,
-      prev: ListNode1 | null = null,
-      next: ListNode1 | null = null
-   ) {
-      this.value = value
-      this.prev = prev
-      this.next = next
-   }
+// function possibleStringCount(word: string): number {
+//   if (word.length === 1) return 1
+//   let count: number = 0
+//   let curr: string = ''
+//   let i = 0
+//   while (i < word.length) {
+//     if (word[i] !== '') {
+//       if (curr === word[i]) count++
+//     }
+//     curr = word[i]
+//     i++
+//   }
+//   return count + 1
+// }
+
+// console.log(possibleStringCount('aaaa'))
+
+function possibleStringCount(word: string, k: number): number {
+  if (word.length === k) return 1
+  let count: number = 0
+  let curr: string = ''
+  let i = 0
+  while (i < word.length) {
+    if (word[i] !== '') {
+      if (curr === word[i]) count++
+    }
+    curr = word[i]
+    i++
+  }
+  return count + 1
 }
 
-class LinkedList {
-   head: ListNode1
-   tail: ListNode1
-   length: number
-   constructor(value: number) {
-      const newNode = new ListNode1(value)
-      this.head = this.tail = newNode
-      this.length = 1
-   }
+console.log(possibleStringCount('aaabbb', 7))
 
-   append(value: number) {
-      const newNode = new ListNode1(value, this.tail)
-      this.tail.next = newNode
-      this.tail = newNode
-      this.length++
-   }
-   prepend(value: number) {
-      const newNode = new ListNode1(value, null, this.head)
-      this.head.prev = newNode
-      this.head = newNode
-      this.length++
-   }
-}
+// Input: word = "aabbccdd", k = 7
 
-const list = new LinkedList(10)
-list.append(20)
-list.prepend(1)
-console.log(list)
+// Output: 5
+
+// Explanation:
+
+// The possible strings are: "aabbccdd", "aabbccd", "aabbcdd", "aabccdd", and "abbccdd".
+
+// "aaabbb", k = 3
