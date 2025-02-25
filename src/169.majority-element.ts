@@ -5,23 +5,15 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function majorityElement(nums: number[]): number {
-  const map = new Map<number, number>()
-  let i = 0
-  while (i < nums.length) {
-    if (map.has(nums[i])) {
-      map.set(nums[i], map.get(nums[i])! + 1)
-    } else map.set(nums[i], 1)
-    i++
+  // moore's voting algorithm
+  let freq = 0, ans = 0
+  for (const num of nums) {
+    if (freq === 0) ans = num
+    freq += ans === num ? 1 : -1
   }
-  let major: number
-  map.forEach((v, k) => {
-    if (v > nums.length / 2) {
-      major = k
-    }
-  })
-  return major
+  return ans
 }
-// https://leetcode.com/u/nofaceman/
 // https://github.com/sshuvoo
 // @lc code=end
