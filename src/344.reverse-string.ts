@@ -8,17 +8,14 @@
 /**
  Do not return anything, modify s in-place instead.
  */
+// https://github.com/sshuvoo
 function reverseString(s: string[]): void {
-  let left = 0
-  let right = s.length - 1
-  while (left < right) {
-    const temp = s[left]
-    s[left] = s[right]
-    s[right] = temp
-    left++
-    right--
+  let lp = 0, rp = s.length - 1
+  while (lp < rp) {
+    ;[s[lp], s[rp]] = [s[rp], s[lp]]
+    lp++
+    rp--
   }
 }
-// https://leetcode.com/u/nofaceman/
 // https://github.com/sshuvoo
 // @lc code=end
