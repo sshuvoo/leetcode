@@ -6,29 +6,31 @@
 
 // @lc code=start
 function isAlphanumeric(char: string) {
-  const lowerChar = char.toLowerCase()
-  const code = lowerChar.charCodeAt(0)
-  return (code >= 97 && code <= 122) || (code >= 48 && code <= 57)
+  if (
+    ('0' <= char && char <= '9') ||
+    ('a' <= char && char <= 'z') ||
+    ('A' <= char && char <= 'Z')
+  )
+    return true
+  return false
 }
 
 function isPalindrome(s: string): boolean {
-  let left = 0
-  let right = s.length - 1
-  while (left < right) {
-    if (!isAlphanumeric(s[left])) {
-      left++
+  let lp = 0, rp = s.length - 1
+  while (lp < rp) {
+    if (!isAlphanumeric(s[lp])) {
+      lp++
       continue
     }
-    if (!isAlphanumeric(s[right])) {
-      right--
+    if (!isAlphanumeric(s[rp])) {
+      rp--
       continue
     }
-    if (s[left].toLowerCase() !== s[right].toLowerCase()) return false
-    left++
-    right--
+    if (s[lp].toLowerCase() !== s[rp].toLowerCase()) return false
+    lp++
+    rp--
   }
   return true
 }
-// https://leetcode.com/u/nofaceman/
 // https://github.com/sshuvoo
 // @lc code=end
