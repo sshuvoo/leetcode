@@ -6,14 +6,14 @@
 
 // @lc code=start
 function twoSum(nums: number[], target: number): number[] {
-  const hashmap = new Map<number, number>()
+  const hashMap = new Map<number, number>()
   for (let i = 0; i < nums.length; i++) {
-    if (hashmap.has(target - nums[i])) {
-      return [hashmap.get(target - nums[i])!, i]
+    const complement = target - nums[i]
+    if (hashMap.has(complement)) {
+      return [i, hashMap.get(complement)!]
     }
-    hashmap.set(nums[i], i)
+    hashMap.set(nums[i], i)
   }
   return []
 }
-// [2,7,11,15] 9
 // @lc code=end
