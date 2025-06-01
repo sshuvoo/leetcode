@@ -7,19 +7,16 @@
 // @lc code=start
 function subarraySum(nums: number[], k: number): number {
   let count = 0
-  let i = 0
-  let j = 0
-  let sum = 0
-  for(let i = 0; i<nums.length;i++){
-    if(sum>k) {
-      j++
-      sum
+  for (let i = 0; i < nums.length; i++) {
+    if (i === 0) {
+      nums[i] = nums[i]
+      if (nums[i] === k) count++
+    } else {
+      if (nums[i] === k) count++
+      nums[i] = nums[i] + nums[i - 1]
+      if (nums[i] === k) count++
     }
-    sum += nums[i]
-    if(sum===k) count++
-
   }
+  return count
 }
 // @lc code=end
-
-// [1,2,3, 5, 8, 9, 4] k=8
