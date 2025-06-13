@@ -16,18 +16,18 @@
  *     }
  * }
  */
-
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 function hasCycle(head: ListNode | null): boolean {
-  if (head === null || head.next === null) return false
   let slow: ListNode | null = head
   let fast: ListNode | null = head
-  while (fast !== null && fast.next !== null) {
-    slow = slow.next
+  while (fast != null && fast.next != null) {
+    slow = slow!.next
     fast = fast.next.next
-    if (slow === fast) return true
+    if (slow == fast) return true
   }
   return false
 }
-// https://leetcode.com/u/sshuvoo
+// https://leetcode.com/u/sshuvoo/
 // https://github.com/sshuvoo (Give me star)
 // @lc code=end
