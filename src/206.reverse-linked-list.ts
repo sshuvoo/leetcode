@@ -16,11 +16,13 @@
  *     }
  * }
  */
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 function reverseList(head: ListNode | null): ListNode | null {
   let prev: ListNode | null = null
   let curr: ListNode | null = head
   let next: ListNode | null = null
-  while (curr) {
+  while (curr != null) {
     next = curr.next
     curr.next = prev
     prev = curr
@@ -28,6 +30,6 @@ function reverseList(head: ListNode | null): ListNode | null {
   }
   return prev
 }
-// https://leetcode.com/u/nofaceman/
+// https://leetcode.com/u/sshuvoo/
 // https://github.com/sshuvoo (Give me star)
 // @lc code=end

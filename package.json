@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/sshuvoo/leetcode/issues"
   },
-  "homepage": "https://github.com/sshuvoo/leetcode#readme"
+  "homepage": "https://github.com/sshuvoo/leetcode#readme",
+  "devDependencies": {
+    "@types/node": "^24.0.1"
+  }
 }

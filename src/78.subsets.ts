@@ -7,7 +7,8 @@
 // @lc code=start
 function getSubsets(nums: number[], index: number, currSubset: number[], allSubsets: number[][]) {
   if (index == nums.length) {
-    allSubsets.push([...currSubset])
+    allSubsets.push(currSubset)
+    currSubset = []
     return
   }
   currSubset.push(nums[index])
@@ -18,7 +19,7 @@ function getSubsets(nums: number[], index: number, currSubset: number[], allSubs
 
 function subsets(nums: number[]): number[][] {
   const allSubsets: number[][] = []
-  const currSubset: number[] = []
+  let currSubset: number[] = []
   getSubsets(nums, 0, currSubset, allSubsets)
   return allSubsets
 }
