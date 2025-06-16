@@ -16,31 +16,42 @@
  *     }
  * }
  */
-
-function mergeTwoLists(
-  list1: ListNode | null,
-  list2: ListNode | null
-): ListNode | null {
-  if (list1 === null) return list2
-  if (list2 === null) return list1
-  let pointer1: ListNode | null = list1
-  let pointer2: ListNode | null = list2
-  let mergedList: ListNode = new ListNode()
-  let currML = mergedList
-  while (pointer1 !== null && pointer2 !== null) {
-    if (pointer1.val < pointer2.val) {
-      currML.next = pointer1
-      pointer1 = pointer1.next
-    } else {
-      currML.next = pointer2
-      pointer2 = pointer2.next
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
+function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
+    if(list1 == null || list2 == null) {
+      return list1 == null ? list2 : list1
     }
-    currML = currML.next
-  }
-  if (pointer1 !== null) currML.next = pointer1
-  if (pointer2 !== null) currML.next = pointer2
-  return mergedList.next
-}
-// Input: list1 = [1,2,4], list2 = [1,3,4]
-// Output: [1,1,2,3,4,4]
+
+    // with recursive function
+
+    // if(list1.val < list2.val){
+    //   list1.next = mergeTwoLists(list1.next, list2)
+    //   return list1
+    // } else {
+    //   list2.next = mergeTwoLists(list1, list2.next)
+    //   return list2
+    // }
+
+    // with loop
+
+    const head : ListNode | null = new ListNode()
+
+    let curr : ListNode | null = head
+
+    while(list1 != null && list2 != null){
+      if(list1.val<list2.val){
+        
+      } else {
+
+      }
+    }
+
+    if(list1!=null)  curr!.next = list1
+    if(list2!=null) curr!.next = list2
+
+    return head.next
+};
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 // @lc code=end
