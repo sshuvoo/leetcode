@@ -8,25 +8,53 @@
 /**
  Do not return anything, modify board in-place instead.
  */
-function getPerfectDigit(board: string[][], row: number, col: number): string {
-    // check column
-    for(let d=0; d<=9; d++){
-      const char = d.toString()
-      
-    }
-}
-function solveSudoku(board: string[][]): void {
-  function backtrack(row: number) {
-    if (row == 9) return
+type str = string
+type num = number
+type bool = boolean
 
-    for (let j = 0; j < 9; j++) {
-      if (board[row][j] == '.') {
-        board[row][j] == getPerfectDigit(board, row, j)
-        backtrack(row + 1)
-        board[row][j] == '.'
-      }
+function isValidDigit(board: str[][], digit: str, row: num, col: num): bool {
+  // check the row
+  for (let j = 0; j <= 8; j++) {
+    if (board[row][j] == digit) return false
+  }
+  // check the column
+  for (let i = 0; i <= 8; i++) {
+    if (board[i][col] == digit) return false
+  }
+  // check the 3x3 square
+  row = Math.floor(row / 3) * 3
+  col = Math.floor(col / 3) * 3
+
+  for (let i = row; i <= row + 2; i++) {
+    for (let j = col; j <= col + 2; j++) {
+      if (board[i][j] == digit) return false
     }
   }
-  backtrack(0)
+  return true
+}
+function solveSudoku(board: str[][]): void {
+  function inspectCell(row: num, col: num): bool {
+    if (col == 9) {
+      row++
+      col = 0
+    }
+    if (row == 9) return true
+
+    if (board[row][col] != '.') {
+      return inspectCell(row, col + 1)
+    } else {
+      for (let d = 1; d <= 9; d++) {
+        const digit = d.toString()
+        if (isValidDigit(board, digit, row, col)) {
+          board[row][col] = digit
+          const isSuccess = inspectCell(row, col + 1)
+          if (isSuccess) return true
+          board[row][col] = '.'
+        }
+      }
+      return false
+    }
+  }
+  inspectCell(0, 0)
 }
 // @lc code=end
