@@ -32,6 +32,7 @@ function isValidDigit(board: str[][], digit: str, row: num, col: num): bool {
   }
   return true
 }
+
 function solveSudoku(board: str[][]): void {
   function inspectCell(row: num, col: num): bool {
     if (col == 9) {
@@ -57,4 +58,6 @@ function solveSudoku(board: str[][]): void {
   }
   inspectCell(0, 0)
 }
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 // @lc code=end

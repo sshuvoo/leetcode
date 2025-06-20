@@ -6,10 +6,10 @@
 
 // @lc code=start
 type IBoard = ('.' | 'Q')[][]
-type int = number
+type num = number
 type bool = boolean
 
-function isSafe(board: IBoard, row: int, col: int, n: int): bool {
+function isSafe(board: IBoard, row: num, col: num, n: num): bool {
   // Vertical
   for (let i = 0; i < row; i++) {
     if (board[i][col] == 'Q') return false
@@ -31,7 +31,7 @@ function isSafe(board: IBoard, row: int, col: int, n: int): bool {
 function solveNQueens(n: number): string[][] {
   const solution: string[][] = []
   const board: IBoard = Array.from({ length: n }, () => Array(n).fill('.'))
-  function backtrack(row: number) {
+  function inspectCell(row: number) {
     if (row == n) {
       solution.push(board.map((item) => item.join('')))
       return
@@ -39,12 +39,14 @@ function solveNQueens(n: number): string[][] {
     for (let j = 0; j < n; j++) {
       if (isSafe(board, row, j, n)) {
         board[row][j] = 'Q'
-        backtrack(row + 1)
+        inspectCell(row + 1)
         board[row][j] = '.'
       }
     }
   }
-  backtrack(0)
+  inspectCell(0)
   return solution
 }
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 // @lc code=end
