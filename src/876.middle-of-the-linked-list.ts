@@ -17,7 +17,7 @@
  * }
  */
 // https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
+// https://github.com/sshuvoo
 function middleNode(head: ListNode | null): ListNode | null {
   let slow: ListNode | null = head
   let fast: ListNode | null = head
@@ -28,5 +28,5 @@ function middleNode(head: ListNode | null): ListNode | null {
   return slow
 }
 // https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
+// https://github.com/sshuvoo
 // @lc code=end
