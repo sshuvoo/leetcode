@@ -16,30 +16,30 @@
  *     }
  * }
  */
+
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
   if (head == null) return head
-  let curr: ListNode | null = head
+  let temp: ListNode | null = head
   let count = 0
-  while (curr != null && count<=k) {
+  while (count < k && temp != null) {
     count++
-    curr = curr.next
-  }
-  if (count != k) {
-    return head
+    temp = temp.next
   }
 
- const revNodes = reverseKGroup(curr, k)
+  if (count < k) return head
+  let restNodes = reverseKGroup(temp, k)
 
+  temp = head
   count = 0
-  curr = head
 
-  while(count<=k){
-    const restNode = curr.next
-    curr.next = revNodes
-    curr = restNode
+  while (count < k) {
+    const nextNode: ListNode | null = temp!.next
+    temp!.next = restNodes
+    restNodes = temp
+    temp = nextNode
+    count++
   }
 
-
- 
+  return restNodes
 }
 // @lc code=end
