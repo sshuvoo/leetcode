@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo
 type num = number
 type bool = boolean
 
@@ -13,9 +15,8 @@ function checkValidGrid(grid: num[][]): bool {
     const n = grid.length
     if (row < 0 || col < 0 || row >= n || col >= n) return false
     if (val == n * n) return true
-    if (grid[row][col] == -1 || grid[row][col] != val) return false
+    if (grid[row][col] != val) return false
 
-    grid[row][col] = -1
     const topR = moveTo(row - 2, col + 1, val + 1)
     const topL = moveTo(row - 2, col - 1, val + 1)
 
