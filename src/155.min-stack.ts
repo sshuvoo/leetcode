@@ -5,33 +5,28 @@
  */
 
 // @lc code=start
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 class MinStack {
-  constructor(private stack: number[][] = [], private min: number = Infinity) {}
+  constructor(private stack: { val: number; min: number }[] = []) {}
 
   push(val: number): void {
-    this.stack.push([val, this.min])
-    this.min = Math.min(this.min, val)
+    const min = this.stack.length == 0 ? val : Math.min(val, this.getMin())
+    this.stack.push({ val, min })
   }
 
   pop(): void {
-    this.min = this.stack.pop()![1]
+    this.stack.pop()
   }
 
   top(): number {
-    return this.stack[this.stack.length - 1][0]
+    return this.stack[this.stack.length - 1].val
   }
 
   getMin(): number {
-    return this.min
+    return this.stack[this.stack.length - 1].min
   }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * var obj = new MinStack()
- * obj.push(val)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.getMin()
- */
+// https://leetcode.com/u/sshuvoo/
+// https://github.com/sshuvoo (Give me star)
 // @lc code=end
