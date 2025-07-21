@@ -2,7 +2,7 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "Source code of leetcode problems.",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "start": "node index"
@@ -23,5 +23,9 @@
   "homepage": "https://github.com/sshuvoo/leetcode#readme",
   "devDependencies": {
     "@types/node": "^24.0.1"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "stl-kit": "^5.1.1"
   }
 }
