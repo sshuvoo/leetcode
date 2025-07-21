@@ -5,18 +5,16 @@
  */
 
 // @lc code=start
-// https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
 class MinStack {
   constructor(private stack: number[][] = [], private min: number = Infinity) {}
 
   push(val: number): void {
     this.stack.push([val, this.min])
-    this.min = Math.min(val, this.min)
+    this.min = Math.min(this.min, val)
   }
 
   pop(): void {
-    this.min = this.stack.pop()![1]!
+    this.min = this.stack.pop()![1]
   }
 
   top(): number {
@@ -27,8 +25,6 @@ class MinStack {
     return this.min
   }
 }
-// https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
 
 /**
  * Your MinStack object will be instantiated and called as such:
