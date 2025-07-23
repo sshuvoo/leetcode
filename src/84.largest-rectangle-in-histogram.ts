@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function largestRectangleArea(heights: number[]): number {
   const len = heights.length
   const stack: number[] = []
@@ -29,7 +30,7 @@ function largestRectangleArea(heights: number[]): number {
       stack.pop()
     }
 
-    if (stack.length == 0) next[i] = -1
+    if (stack.length == 0) next[i] = len
     else next[i] = stack[stack.length - 1]
 
     stack.push(i)
@@ -38,22 +39,11 @@ function largestRectangleArea(heights: number[]): number {
   let maxArea: number = -Infinity
 
   for (let i = 0; i < len; i++) {
-    if (prev[i] != -1 && next[i] != -1) {
-      const width = next[i] - prev[i] - 1
-      const height = heights[i]
-      maxArea = Math.max(maxArea, width * height)
-    } else if (prev[i] != -1) {
-      const width = len - 1 - prev[i]
-      maxArea = Math.max(maxArea, width * heights[i])
-    } else if (next[i] != -1) {
-      const width = next[i] - 0
-      maxArea = Math.max(maxArea, width * heights[i])
-    } else {
-      const width = len
-      maxArea = Math.max(maxArea, width * heights[i])
-    }
+    const width = next[i] - prev[i] - 1
+    maxArea = Math.max(maxArea, width * heights[i])
   }
 
   return maxArea
 }
+// https://github.com/sshuvoo
 // @lc code=end

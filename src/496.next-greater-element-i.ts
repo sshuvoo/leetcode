@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
   const map = new Map<number, number>()
   const stack: number[] = []
@@ -28,4 +29,5 @@ function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
 
   return nums1
 }
+// https://github.com/sshuvoo
 // @lc code=end
