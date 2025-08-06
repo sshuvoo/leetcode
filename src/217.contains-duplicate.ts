@@ -5,14 +5,14 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function containsDuplicate(nums: number[]): boolean {
-  const hashTable = new Map<number, number>()
+  const set = new Set<number>()
   for (const num of nums) {
-    if (hashTable.get(num) === 1) return true
-    else hashTable.set(num, 1)
+    if (set.has(num)) return true
+    else set.add(num)
   }
   return false
 }
-// https://leetcode.com/u/nofaceman/
 // https://github.com/sshuvoo
 // @lc code=end
