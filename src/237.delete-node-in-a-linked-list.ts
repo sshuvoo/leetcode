@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode id=237 lang=typescript
+ *
+ * [237] Delete Node in a Linked List
+ */
+
+// @lc code=start
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -13,9 +20,11 @@
 /**
  Do not return anything, modify it in-place instead.
  */
-function deleteNode(node: ListNode | null): void {
-   if (node && node.next) {
-      node.val = node.next.val
-      node.next = node.next.next
-   }
+// https://github.com/sshuvoo
+function deleteNode(node: ListNode): void {
+  // swap the val with next node, delete the next node
+  node.val = node.next!.val
+  node.next = node.next!.next
 }
+// https://github.com/sshuvoo
+// @lc code=end
