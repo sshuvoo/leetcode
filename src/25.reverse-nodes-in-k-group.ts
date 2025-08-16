@@ -17,29 +17,25 @@
  * }
  */
 
+// https://github.com/sshuvoo
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
-  if (head == null) return head
-  let temp: ListNode | null = head
+  let curr = head
   let count = 0
-  while (count < k && temp != null) {
+  while (curr != null && count < k) {
     count++
-    temp = temp.next
+    curr = curr.next
   }
-
   if (count < k) return head
-  let restNodes = reverseKGroup(temp, k)
-
-  temp = head
+  let rList = reverseKGroup(curr, k)
   count = 0
-
   while (count < k) {
-    const nextNode: ListNode | null = temp!.next
-    temp!.next = restNodes
-    restNodes = temp
-    temp = nextNode
+    const next = head!.next
+    head!.next = rList
+    rList = head
+    head = next
     count++
   }
-
-  return restNodes
+  return rList
 }
+// https://github.com/sshuvoo
 // @lc code=end
