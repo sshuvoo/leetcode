@@ -5,10 +5,23 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
+// Floyd's Cycle Detection, treating numbers as "next pointers."
 function findDuplicate(nums: number[]): number {
-  const n = nums.length
-  let sum = ((n - 1) * n) / 2
-  for (let i = 0; i < n; i++) sum -= nums[i]
-  return Math.abs(sum)
+  let slow = nums[0], fast = nums[0]
+  while (true) {
+    slow = nums[slow]
+    fast = nums[nums[fast]]
+    if (slow == fast) {
+      slow = nums[0]
+      break
+    }
+  }
+  while (slow != fast) {
+    slow = nums[slow]
+    fast = nums[fast]
+  }
+  return slow
 }
+// https://github.com/sshuvoo
 // @lc code=end
