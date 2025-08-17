@@ -10,7 +10,7 @@ function plusOne(digits: number[]): number[] {
   for (let i = digits.length - 1; i >= 0; i--) {
     const sum = carry + digits[i]
     digits[i] = sum % 10
-    if (sum <= 9) return digits
+    if (sum < 10) return digits
     carry = Math.floor(sum / 10)
   }
   if (carry > 0) digits.unshift(carry)
