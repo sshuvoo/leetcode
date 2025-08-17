@@ -16,30 +16,27 @@
  *     }
  * }
  */
-
+// https://github.com/sshuvoo
 function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
   const dummy = new ListNode()
   let curr = dummy
   let carry = 0
-  while (l1 || l2 || carry) {
+  while (l1 != null || l2 != null || carry > 0) {
     let sum = carry
-    if (l1) {
+    if (l1 != null) {
       sum += l1.val
       l1 = l1.next
     }
-    if (l2) {
+    if (l2 != null) {
       sum += l2.val
       l2 = l2.next
     }
-    if (sum >= 10) {
-      sum = sum % 10
-      carry = 1
-    } else carry = 0
-    curr.next = new ListNode(sum)
+    const newNode = new ListNode(sum % 10)
+    curr.next = newNode
     curr = curr.next
+    carry = Math.floor(sum / 10)
   }
   return dummy.next
 }
-// https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
+// https://github.com/sshuvoo
 // @lc code=end
