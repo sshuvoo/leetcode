@@ -13,7 +13,7 @@ function lengthOfLongestSubstring(s: string): number {
   for (let i = 0; i < s.length; i++) {
     if (hm.has(s[i])) {
       const index = hm.get(s[i])!
-      for(let j = lp; j<=index; j++){
+      for (let j = lp; j <= index; j++) {
         hm.delete(s[j])
       }
       lp = index + 1

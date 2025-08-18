@@ -6,14 +6,12 @@
 
 // @lc code=start
 function plusOne(digits: number[]): number[] {
-  let carry = 1
   for (let i = digits.length - 1; i >= 0; i--) {
-    const sum = carry + digits[i]
+    const sum = digits[i] + 1
     digits[i] = sum % 10
     if (sum < 10) return digits
-    carry = Math.floor(sum / 10)
   }
-  if (carry > 0) digits.unshift(carry)
+  digits.unshift(1)
   return digits
 }
 // @lc code=end
