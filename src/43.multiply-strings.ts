@@ -7,22 +7,23 @@
 // @lc code=start
 // https://github.com/sshuvoo
 function multiply(num1: string, num2: string): string {
-  const result: number[] = Array(num1.length + num2.length).fill(0)
-  for (let i = num1.length - 1; i >= 0; i--) {
-    for (let j = num2.length - 1; j >= 0; j--) {
+  if (num1 == '0' || num2 == '0') return '0'
+  const n = num1.length, m = num2.length
+  const result = new Array<number>(n + m).fill(0)
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
       const multiply = parseInt(num1[i]) * parseInt(num2[j])
       const sum = result[i + j + 1] + multiply
       result[i + j + 1] = sum % 10
       result[i + j] += Math.floor(sum / 10)
     }
   }
-  let lp = 0
+  let sliceIdx = 0
   for (const digit of result) {
     if (digit != 0) break
-    lp++
+    sliceIdx++
   }
-  const res = result.slice(lp).join('')
-  return res == '' ? '0' : res
+  return result.slice(sliceIdx).join('')
 }
 // https://github.com/sshuvoo
 // @lc code=end
