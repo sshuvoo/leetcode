@@ -8,14 +8,9 @@
 function removeDuplicates(s: string): string {
   const stack: string[] = []
   for (const char of s) {
-    if (stack.length > 0) {
-      const peek = stack[stack.length - 1]!
-      if (char == peek) {
-        stack.pop()
-        continue
-      }
-    }
-    stack.push(char)
+    if (char == stack.at(-1)) {
+      stack.pop()
+    } else stack.push(char)
   }
   return stack.join('')
 }
