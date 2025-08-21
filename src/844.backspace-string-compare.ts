@@ -16,4 +16,5 @@ function backspaceCompare(s: string, t: string): boolean {
   }
   return getRest(s) == getRest(t)
 }
+//  s = "ab#c", t = "ad#c"
 // @lc code=end
