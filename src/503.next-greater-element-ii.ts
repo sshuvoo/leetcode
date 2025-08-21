@@ -7,20 +7,18 @@
 // @lc code=start
 // https://github.com/sshuvoo
 function nextGreaterElements(nums: number[]): number[] {
-  const len = nums.length
+  const n = nums.length
+  const answer: number[] = new Array(nums.length).fill(-1)
   const stack: number[] = []
-  const res: number[] = []
-
-  for (let i = 2 * len - 1; i >= 0; i--) {
-    const index = i % len
-    while (stack.length > 0 && nums[stack[stack.length - 1]] <= nums[index]) {
+  for (let i = 2 * n - 1; i >= 0; i--) {
+    const idx = i % n
+    while (stack.length > 0 && nums[idx] >= stack[stack.length - 1]) {
       stack.pop()
     }
-    res[index] = stack.length == 0 ? -1 : nums[stack[stack.length - 1]]
-    stack.push(index)
+    if (stack.length > 0) answer[idx] = stack[stack.length - 1]
+    stack.push(nums[idx])
   }
-
-  return res
+  return answer
 }
 // https://github.com/sshuvoo
 // @lc code=end
