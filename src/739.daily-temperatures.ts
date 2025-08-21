@@ -6,7 +6,7 @@
 
 // @lc code=start
 function dailyTemperatures(temperatures: number[]): number[] {
-  const answer: number[] = []
+  const answer: number[] = new Array(temperatures.length).fill(0)
   const stack: number[] = []
   for (let i = temperatures.length - 1; i >= 0; i--) {
     while (
@@ -15,7 +15,7 @@ function dailyTemperatures(temperatures: number[]): number[] {
     ) {
       stack.pop()
     }
-    answer[i] = stack.length == 0 ? 0 : stack[stack.length - 1] - i
+    if (stack.length > 0) answer[i] = stack[stack.length - 1] - i
     stack.push(i)
   }
   return answer
