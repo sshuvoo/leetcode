@@ -13,30 +13,24 @@ function largestRectangleArea(heights: number[]): number {
   const next: number[] = []
   // prev smaller
   for (let i = 0; i < len; i++) {
-    while (stack.length > 0 && heights[stack[stack.length - 1]] >= heights[i]) {
+    while (stack.length > 0 && heights[i] <= heights[stack[stack.length - 1]]) {
       stack.pop()
     }
-
-    if (stack.length == 0) prev[i] = -1
-    else prev[i] = stack[stack.length - 1]
-
+    prev[i] = stack.length > 0 ? stack[stack.length - 1] : -1
     stack.push(i)
   }
 
   stack.length = 0
   // next smaller
   for (let i = len - 1; i >= 0; i--) {
-    while (stack.length > 0 && heights[stack[stack.length - 1]] >= heights[i]) {
+    while (stack.length > 0 && heights[i] <= heights[stack[stack.length - 1]]) {
       stack.pop()
     }
-
-    if (stack.length == 0) next[i] = len
-    else next[i] = stack[stack.length - 1]
-
+    next[i] = stack.length > 0 ? stack[stack.length - 1] : len
     stack.push(i)
   }
 
-  let maxArea: number = -Infinity
+  let maxArea: number = 0
 
   for (let i = 0; i < len; i++) {
     const width = next[i] - prev[i] - 1
