@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/sshuvoo/leetcode#readme",
   "dependencies": {
-    "stl-kit": "^5.1.1"
+    "stl-kit": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^24.3.0"
