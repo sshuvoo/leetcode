@@ -6,16 +6,14 @@
 
 // @lc code=start
 function subarraySum(nums: number[], k: number): number {
-  let count = 0
-  for (let i = 0; i < nums.length; i++) {
-    if (i === 0) {
-      nums[i] = nums[i]
-      if (nums[i] === k) count++
-    } else {
-      if (nums[i] === k) count++
-      nums[i] = nums[i] + nums[i - 1]
-      if (nums[i] === k) count++
+  let count = 0, ps = 0 // prefix sum
+  const map = new Map<number, number>([[0, 1]])
+  for (const num of nums) {
+    ps += num
+    if (map.has(ps - k)) {
+      count += map.get(ps - k)!
     }
+    map.set(ps, (map.get(ps) || 0) + 1)
   }
   return count
 }

@@ -8,17 +8,14 @@
 // https://github.com/sshuvoo
 function lengthOfLongestSubstring(s: string): number {
   const n = s.length
-  const m = new Map<string, number>()
+  const set = new Set<string>()
   let maxLen = 0
   let lp = 0, rp = 0
   while (rp < n) {
-    if (m.has(s[rp])) {
-      const idx = m.get(s[rp])!
-      while (lp <= idx) {
-        m.delete(s[lp++])
-      }
+    while (set.has(s[rp])) {
+      set.delete(s[lp++])
     }
-    m.set(s[rp], rp)
+    set.add(s[rp])
     maxLen = Math.max(maxLen, rp++ - lp + 1)
   }
   return maxLen
