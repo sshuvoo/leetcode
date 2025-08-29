@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function fizzBuzz(n: number): string[] {
   const ans: string[] = []
   for (let i = 1; i <= n; i++) {
@@ -15,4 +16,5 @@ function fizzBuzz(n: number): string[] {
   }
   return ans
 }
+// https://github.com/sshuvoo
 // @lc code=end
