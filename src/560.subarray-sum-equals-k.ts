@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// https://github.com/sshuvoo
 function subarraySum(nums: number[], k: number): number {
   let count = 0, ps = 0 // prefix sum
   const map = new Map<number, number>([[0, 1]])
@@ -17,4 +18,5 @@ function subarraySum(nums: number[], k: number): number {
   }
   return count
 }
+// https://github.com/sshuvoo
 // @lc code=end

@@ -1,3 +1,5 @@
+import * as STL from 'stl-kit'
+
 export class TreeNode {
   val: number
   left: TreeNode | null
@@ -8,4 +10,3 @@ export class TreeNode {
     this.right = right === undefined ? null : right
   }
 }
-
