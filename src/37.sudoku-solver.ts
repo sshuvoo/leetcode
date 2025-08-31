@@ -8,56 +8,55 @@
 /**
  Do not return anything, modify board in-place instead.
  */
-type str = string
 type num = number
 type bool = boolean
+type str = string
 
-function isValidDigit(board: str[][], digit: str, row: num, col: num): bool {
+function isSafeDigit(board: str[][], d: str, r: num, c: num): bool {
   // check the row
-  for (let j = 0; j <= 8; j++) {
-    if (board[row][j] == digit) return false
+  for (let j = 0; j < 9; j++) {
+    if (board[r][j] == d) return false
   }
-  // check the column
-  for (let i = 0; i <= 8; i++) {
-    if (board[i][col] == digit) return false
+  // check the colums
+  for (let i = 0; i < 9; i++) {
+    if (board[i][c] == d) return false
   }
-  // check the 3x3 square
-  row = Math.floor(row / 3) * 3
-  col = Math.floor(col / 3) * 3
-
-  for (let i = row; i <= row + 2; i++) {
-    for (let j = col; j <= col + 2; j++) {
-      if (board[i][j] == digit) return false
+  // check in the 3x3 box
+  r = 3 * Math.floor(r / 3)
+  c = 3 * Math.floor(c / 3)
+  for (let i = r; i < r + 3; i++) {
+    for (let j = c; j < c + 3; j++) {
+      if (board[i][j] == d) return false
     }
   }
   return true
 }
 
 function solveSudoku(board: str[][]): void {
-  function inspectCell(row: num, col: num): bool {
-    if (col == 9) {
-      row++
-      col = 0
+  function inspect(r: number, c: number): bool {
+    if (c == 9) {
+      c = 0
+      r++
     }
-    if (row == 9) return true
+    if (r == 9) return true
+    const cv = board[r][c]
 
-    if (board[row][col] != '.') {
-      return inspectCell(row, col + 1)
-    } else {
-      for (let d = 1; d <= 9; d++) {
-        const digit = d.toString()
-        if (isValidDigit(board, digit, row, col)) {
-          board[row][col] = digit
-          const isSuccess = inspectCell(row, col + 1)
-          if (isSuccess) return true
-          board[row][col] = '.'
-        }
-      }
-      return false
+    if (cv != '.') {
+      return inspect(r, c + 1)
     }
+
+    for (let i = 1; i <= 9; i++) {
+      const d = i.toString()
+      if (isSafeDigit(board, d, r, c)) {
+        board[r][c] = d
+        if (inspect(r, c + 1)) {
+          return true
+        }
+        board[r][c] = '.'
+      }
+    }
+    return false
   }
-  inspectCell(0, 0)
+  inspect(0, 0)
 }
-// https://leetcode.com/u/sshuvoo/
-// https://github.com/sshuvoo (Give me star)
 // @lc code=end
