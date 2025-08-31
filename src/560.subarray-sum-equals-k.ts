@@ -5,10 +5,10 @@
  */
 
 // @lc code=start
-// https://github.com/sshuvoo
 function subarraySum(nums: number[], k: number): number {
-  let count = 0, ps = 0 // prefix sum
   const map = new Map<number, number>([[0, 1]])
+  let ps = 0
+  let count = 0
   for (const num of nums) {
     ps += num
     if (map.has(ps - k)) {
@@ -18,5 +18,4 @@ function subarraySum(nums: number[], k: number): number {
   }
   return count
 }
-// https://github.com/sshuvoo
 // @lc code=end
