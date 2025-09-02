@@ -5,18 +5,19 @@
  */
 
 // @lc code=start
-// https://github.com/sshuvoo
 function productExceptSelf(nums: number[]): number[] {
-  const prefix: number[] = [1]
-  for (let i = 1; i < nums.length; i++) {
-    prefix[i] = prefix[i - 1] * nums[i - 1]
+  const n = nums.length
+  const answer: number[] = []
+  let prefix = 1
+  for (let i = 0; i < n; i++) {
+    answer.push(prefix)
+    prefix *= nums[i]
   }
-  let suffix: number = 1
-  for (let i = nums.length - 2; i >= 0; i--) {
-    suffix *= nums[i + 1]
-    prefix[i] *= suffix
+  let suffix = 1
+  for (let i = n - 1; i >= 0; i--) {
+    answer[i] *= suffix
+    suffix *= nums[i]
   }
-  return prefix
+  return answer
 }
-// https://github.com/sshuvoo
 // @lc code=end

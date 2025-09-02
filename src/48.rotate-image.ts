@@ -10,20 +10,21 @@
  */
 // https://github.com/sshuvoo
 function rotate(matrix: number[][]): void {
-  let tl = 0, br = matrix.length - 1
+  let tl = 0, br = matrix.length - 1 // top left, bottom-right
   while (tl < br) {
     for (let i = tl; i < br; i++) {
-      const trVal = matrix[i][br] // 8
-      matrix[i][br] = matrix[tl][i] //4
+      const tempTR = matrix[i][br] // temp top right
+      matrix[i][br] = matrix[tl][i]
 
-      const brVal = matrix[br][br + tl - i]
-      matrix[br][br + tl - i] = trVal
+      const tempBR = matrix[br][br + tl - i]
+      matrix[br][br + tl - i] = tempTR
 
-      const blVal = matrix[br + tl - i][tl]
-      matrix[br + tl - i][tl] = brVal
+      const tempBL = matrix[br + tl - i][tl]
+      matrix[br + tl - i][tl] = tempBR
 
-      matrix[tl][i] = blVal
+      matrix[tl][i] = tempBL
     }
+    // move to inner edge
     tl++
     br--
   }
