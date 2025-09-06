@@ -22,12 +22,7 @@ import { TreeNode } from './types.js'
  */
 
 function countNodes(root: TreeNode | null): number {
-  function dfs(root: TreeNode | null): number {
-    if (root == null) return 0
-    const left = dfs(root.left)
-    const right = dfs(root.right)
-    return left + right + 1
-  }
-  return dfs(root)
+  if (root == null) return 0
+  return countNodes(root.left) + countNodes(root.right) + 1
 }
 // @lc code=end

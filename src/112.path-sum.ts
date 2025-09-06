@@ -21,15 +21,14 @@ import { TreeNode } from './types.js'
  * }
  */
 
-function hasPathSum(
-  root: TreeNode | null,
-  targetSum: number,
-  i: number = 0
-): boolean {
-  if (i != 0 && root == null && targetSum == 0) return true
+function dfs(root: TreeNode | null, targetSum: number): boolean {
+  if (root == null && targetSum == 0) return true
+  if ((root == null && targetSum != 0) || targetSum <= 0) return false
+  const nextTarget = targetSum - root!.val
+  return dfs(root!.left, nextTarget) || dfs(root!.right, nextTarget)
+}
+function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (root == null) return false
-  const left = hasPathSum(root.left, targetSum - root.val, i + 1)
-  const right = hasPathSum(root.right, targetSum - root.val, i + 1)
-  return left || right
+  return dfs(root, targetSum)
 }
 // @lc code=end
